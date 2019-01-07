@@ -65,7 +65,7 @@ namespace Os
         private void button1_Click(object sender, EventArgs e)
         {
             //FIFO的代码
-            FIFOPanel.BringToFront();
+            FIFOPanel.BringToFront();//更新注释
 
         }
 
