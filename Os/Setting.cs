@@ -102,7 +102,7 @@ namespace Os
         private void button2_Click(object sender, EventArgs e)
         {
             xuliedizhi.Text = rand();
-
+            //这里还没有写，没有更新Request
         }
     }
 }

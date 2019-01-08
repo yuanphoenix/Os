@@ -18,6 +18,7 @@ namespace Os
 
         private Thread Tfifo = null;
         private Thread Tlru = null;
+        private Thread Topt = null;
         private ArrayList list = new ArrayList(); 
         public Form1()
         {
@@ -117,7 +118,7 @@ namespace Os
                     if (i==0)
                     {
                         lab.Width = 60;//如果不声明这个宽度有问题！宽度还需要微调。
-                        lab.Left = i * 60 + 50;
+                        lab.Left = 30;
                         lab.Top = j * 30;
                         if (j==0)
                         {
@@ -150,7 +151,7 @@ namespace Os
                     else
                     {
                         lab.Width = 10;
-                        lab.Left = i * 60 + 50;
+                        lab.Left = i *20 +90;
                         lab.Top = j * 30;
    
                         if (q.Count>Request.NumsOfwulikuai)
@@ -223,7 +224,7 @@ namespace Os
                     if (i == 0)
                     {
                         lab.Width = 60;//如果不声明这个宽度有问题！宽度还需要微调。
-                        lab.Left = i * 60 + 50;
+                        lab.Left = 30;
                         lab.Top = j * 30;
                         if (j == 0)
                         {
@@ -256,7 +257,7 @@ namespace Os
                     else
                     {
                         lab.Width = 10;
-                        lab.Left = i * 60 + 50;
+                        lab.Left = i * 20 + 90;
                         lab.Top = j * 30;
                         if (q.Count>wulikuai)
                         {
@@ -300,6 +301,167 @@ namespace Os
 
         }
 
+        private void OPTMethod()
+        {
+            LinkedList<int> q = new LinkedList<int>();
+
+            int wulikuai = Request.NumsOfwulikuai;
+            for (int i = 0; i <= list.Count; i++)
+            {
+                bool queye = true;
+                if (i != 0)
+                {
+                    String a = Convert.ToString(list[i - 1]);
+                    int b = Convert.ToInt32(a);
+
+                    if (q.Contains(b))
+                    {
+                        queye = false;
+                    }
+                    else//不包含，那么需要有页面出来
+                    {
+                        if (q.Count == wulikuai)
+                        {
+                            int[] nums = q.ToArray();
+                            q.Remove(DeleteOpt(i-1, nums));
+                        }
+                        q.AddFirst(b);
+                    }
+                   
+                }
+                for (int j = 0; j < wulikuai + 2; j++)
+                {
+                    Label lab = new Label();
+                  
+                    if (i == 0)
+                    {
+                        lab.Width = 60;//如果不声明这个宽度有问题！宽度还需要微调。
+                        lab.Left = 30;
+                        lab.Top = j * 30;
+                        if (j == 0)
+                        {
+                            lab.Text = "访问序列";
+                            this.Invoke(new Action(() =>
+                            {
+                               OPTPanel.Controls.Add(lab);
+                            }
+                  ));
+                        }
+                        else if (j <= wulikuai)
+                        {
+                            lab.Text = "物理块" + j.ToString();
+                            this.Invoke(new Action(() =>
+                            {
+                                OPTPanel.Controls.Add(lab);
+                            }
+                  ));
+                        }
+                        else
+                        {
+                            lab.Text = "是否缺页";
+                            this.Invoke(new Action(() =>
+                            {
+                                OPTPanel.Controls.Add(lab);
+                            }
+                  ));
+                        }
+                    }
+                    else
+                    {
+                        lab.Width = 10;
+                        lab.Left = i * 20 + 90;
+                        lab.Top = j * 30;
+                      
+                        int[] num = q.ToArray();
+                        if (j == 0)
+                        {
+                            lab.Text = Convert.ToString(list[i - 1]);
+                        }
+                        else if (j <= wulikuai)
+                        {
+                            if (j <= q.Count)
+                            {
+                                lab.Text = num[j - 1].ToString();
+                            }
+
+                        }
+                        else
+                        {
+                            if (queye)
+                            {
+                                lab.Text = "√";
+                            }
+                        }
+                        if (IsHandleCreated)
+                        {
+                            this.Invoke(new Action(() =>
+                            {
+                                OPTPanel.Controls.Add(lab);
+                            }
+                          ));
+                        }
+                    }
+
+                }
+            }
+
+
+        }
+
+        private int DeleteOpt(int index,int []nums)
+        {
+            
+            int[] target = new int[Request.NumsOfneicun];
+            //或许这里可以优化性能
+            for (int i = 0; i < list.Count; i++)
+            {
+                String a = Convert.ToString(list[i]);
+                target[i] = Convert.ToInt32(a);
+            }
+            //坐标数与nums数是一一对应的，都是wulikuai、坐标数开始时都是0；
+            int []pinlv= new int[Request.NumsOfwulikuai];
+
+            /*  for (int i = index ; i < list.Count; i++)
+              {
+                  for (int j = 0; j<Request.NumsOfwulikuai ; j++)
+                  {
+                      if (target[i]==nums[j])
+                      {
+                          pinlv[j] = i;
+                      }
+                  }          
+              }*/
+            for (int i = 0; i < Request.NumsOfwulikuai; i++)
+            {
+
+                bool NoHave = true;//为了防止该页号再也不出现，因此设置如果其不在出现，那么就把他踢出去。
+                for (int j = index; j < list.Count; j++)
+                {
+                    if (nums[i]==target[j])
+                    {
+                        pinlv[i] = j;
+                        break;
+                    }             
+                }
+                if (NoHave)
+                {
+                    return nums[i];
+                }
+               
+            }
+            //找出距离当前最远页，返回页号
+            int max = pinlv[0];
+            int fanhui = 0;
+            for (int i = 0; i < Request.NumsOfwulikuai; i++)
+            {
+                if (pinlv[i]>max)
+                {
+                    max = pinlv[i];
+                    fanhui = i;
+                }
+            }
+            return nums[fanhui];
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             LRUPanel.BringToFront();
@@ -324,6 +486,12 @@ namespace Os
         private void OPT_Click(object sender, EventArgs e)
         {
             OPTPanel.BringToFront();
+            restart();
+            if (Topt==null||Topt.ThreadState.ToString()!="Running")
+            {
+                Topt = new Thread(OPTMethod);
+                Topt.Start();
+            }
         }
     }
 }
