@@ -438,7 +438,7 @@ namespace Os
                 }
                
             }
-            //找出距离当前最远页，返回页号
+            //找出距离当前最远页，返回页号。
             int max = pinlv[0];
             int fanhui = 0;
             for (int i = 0; i < Request.NumsOfwulikuai; i++)
