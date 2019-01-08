@@ -420,26 +420,15 @@ namespace Os
             }
             //坐标数与nums数是一一对应的，都是wulikuai、坐标数开始时都是0；
             int []pinlv= new int[Request.NumsOfwulikuai];
-
-            /*  for (int i = index ; i < list.Count; i++)
-              {
-                  for (int j = 0; j<Request.NumsOfwulikuai ; j++)
-                  {
-                      if (target[i]==nums[j])
-                      {
-                          pinlv[j] = i;
-                      }
-                  }          
-              }*/
             for (int i = 0; i < Request.NumsOfwulikuai; i++)
             {
-
                 bool NoHave = true;//为了防止该页号再也不出现，因此设置如果其不在出现，那么就把他踢出去。
                 for (int j = index; j < list.Count; j++)
                 {
                     if (nums[i]==target[j])
                     {
                         pinlv[i] = j;
+                        NoHave = false;
                         break;
                     }             
                 }
