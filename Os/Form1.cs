@@ -16,6 +16,10 @@ namespace Os
     public partial class Form1 : Form
     {
         private int whichone = 0;
+        private int WithKuai = Request.TimeOfkuaibiao + Request.TimeOfneicun;
+        private int WithKuai_queye = Request.TimeOfkuaibiao + Request.TimeOfqueye + Request.TimeOfkuaibiao + Request.TimeOfneicun + Request.TimeOfneicun;
+        private int WithoutKuai = Request.TimeOfneicun * 2;
+        private int WithoutKuai_queye = Request.TimeOfneicun + Request.TimeOfqueye + Request.TimeOfneicun * 2;
         private Thread Tfifo = null;
         private Thread Tlru = null;
         private Thread Topt = null;
@@ -87,13 +91,12 @@ namespace Os
         //FIFO算法
         private void FIFOMethod()
         {
-
             //这个q是物理块的队列。
             Queue<int> q = new Queue<int>();
 
             int wulikuai = Request.NumsOfwulikuai;
             CheckForIllegalCrossThreadCalls = false;
-          
+            int queyecishu = 0;
             for (int i = 0; i <= list.Count; i++)//列数
             {
                 //设置是否缺页的标志
@@ -106,13 +109,15 @@ namespace Os
                     if (!q.Contains(b))
                     {
                         q.Enqueue(b);//加入队列
+                        queyecishu++;
                         queye = true;//设置需要缺页中断的标志。
                     }
                 }
-                for (int j = 0; j < wulikuai + 2; j++)//行数
+                for (int j = 0; j < wulikuai + 3; j++)//行数
                 {
                     Label lab = new Label();
-                   
+                    // lab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+  
                     lab.Left = 50;
                     lab.Top = j * 30;
                     if (i==0)
@@ -140,20 +145,32 @@ namespace Os
                         }
                         else
                         {
-                            lab.Text = "是否缺页";
-                            this.Invoke(new Action(() =>
+                            if (j == wulikuai + 1)
                             {
-                                FIFOPanel.Controls.Add(lab);
+                                lab.Text = "是否缺页";
+                                this.Invoke(new Action(() =>
+                                {
+                                    FIFOPanel.Controls.Add(lab);
+                                }
+                      ));
                             }
-                  ));
+                            else
+                            {
+                                lab.Text = "缺页率";
+                                this.Invoke(new Action(() =>
+                                {
+                                    FIFOPanel.Controls.Add(lab);
+                                }
+                      ));
+                            }
+                          
                         }
                     }
                     else
                     {
-                        lab.Width = 10;
-                        lab.Left = i *20 +90;
+                        lab.Width = 15;
+                        lab.Left = i *30 +90;
                         lab.Top = j * 30;
-   
                         if (q.Count>Request.NumsOfwulikuai)
                         {
                             q.Dequeue();
@@ -169,13 +186,18 @@ namespace Os
                             {
                                  lab.Text = num[j - 1].ToString();
                             }
-                           
                         }
                         else
                         {
-                            if (queye)
+                            if (j==wulikuai+1)
                             {
-                                lab.Text = "√";
+                                if (queye)
+                                    lab.Text = "√";
+                            }
+                            else//缺页率的计算
+                            {
+                                lab.Width = 30;
+                                lab.Text = ((double)(double)queyecishu / (double)(i)*100).ToString();
                             }
                         }
                         if (IsHandleCreated)

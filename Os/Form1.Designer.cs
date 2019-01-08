@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LRU = new System.Windows.Forms.Button();
             this.OPT = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -45,39 +42,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.FIFO = new System.Windows.Forms.Button();
             this.Pause = new System.Windows.Forms.Button();
-            this.menuStrip2.SuspendLayout();
+            this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.FIFOPanel.SuspendLayout();
             this.OPTPanel.SuspendLayout();
             this.LFUPanel.SuspendLayout();
             this.LRUPanel.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Location = new System.Drawing.Point(0, 28);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1181, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // menuStrip2
-            // 
-            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.设置ToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1181, 28);
-            this.menuStrip2.TabIndex = 1;
-            this.menuStrip2.Text = "menuStrip2";
-            // 
-            // 设置ToolStripMenuItem
-            // 
-            this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
-            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
-            this.设置ToolStripMenuItem.Text = "设置";
-            this.设置ToolStripMenuItem.Click += new System.EventHandler(this.设置ToolStripMenuItem_Click);
             // 
             // LRU
             // 
@@ -158,11 +130,15 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.Control;
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label5.Location = new System.Drawing.Point(13, 17);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 15);
+            this.label5.Size = new System.Drawing.Size(33, 17);
             this.label5.TabIndex = 0;
             this.label5.Text = "LFU";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -210,6 +186,24 @@
             this.Pause.UseVisualStyleBackColor = true;
             this.Pause.Click += new System.EventHandler(this.Pause_Click);
             // 
+            // 设置ToolStripMenuItem
+            // 
+            this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
+            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
+            this.设置ToolStripMenuItem.Text = "设置";
+            this.设置ToolStripMenuItem.Click += new System.EventHandler(this.设置ToolStripMenuItem_Click);
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.设置ToolStripMenuItem});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(1181, 28);
+            this.menuStrip2.TabIndex = 1;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -224,15 +218,11 @@
             this.Controls.Add(this.LRU);
             this.Controls.Add(this.FIFOPanel);
             this.Controls.Add(this.FIFO);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.LRUPanel);
             this.Controls.Add(this.menuStrip2);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.menuStrip2.ResumeLayout(false);
-            this.menuStrip2.PerformLayout();
             this.FIFOPanel.ResumeLayout(false);
             this.FIFOPanel.PerformLayout();
             this.OPTPanel.ResumeLayout(false);
@@ -241,16 +231,14 @@
             this.LFUPanel.PerformLayout();
             this.LRUPanel.ResumeLayout(false);
             this.LRUPanel.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
         private System.Windows.Forms.Button LRU;
         private System.Windows.Forms.Button OPT;
         private System.Windows.Forms.Button button4;
@@ -265,6 +253,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button FIFO;
         private System.Windows.Forms.Button Pause;
+        private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip2;
     }
 }
 
