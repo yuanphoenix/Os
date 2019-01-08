@@ -14,7 +14,6 @@ namespace Os
         public static int TimeOfkuaibiao = 10;//访问快表时间
         public static int TimeOfqueye = 5000;//缺页中断时间
         public static int NumsOfneicun = 9;//内存中的数量
-        int a = 0;
-        public static string xulie = "1323H,3516H,16A7H,6B23H,3D21H,16FCH,C121H,36FCH,C121H";
+        public static string xulie = "1323H,3516H,16A7H,6B23H,3D21H,16FCH,7121H,36FCH,9121H";
     }
 }
