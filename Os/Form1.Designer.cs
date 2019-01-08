@@ -44,6 +44,7 @@
             this.LRUPanel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.FIFO = new System.Windows.Forms.Button();
+            this.Pause = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.FIFOPanel.SuspendLayout();
             this.OPTPanel.SuspendLayout();
@@ -199,11 +200,22 @@
             this.FIFO.UseVisualStyleBackColor = true;
             this.FIFO.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Pause
+            // 
+            this.Pause.Location = new System.Drawing.Point(746, 69);
+            this.Pause.Name = "Pause";
+            this.Pause.Size = new System.Drawing.Size(101, 33);
+            this.Pause.TabIndex = 8;
+            this.Pause.Text = "暂停/恢复";
+            this.Pause.UseVisualStyleBackColor = true;
+            this.Pause.Click += new System.EventHandler(this.Pause_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 669);
+            this.Controls.Add(this.Pause);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.LFUPanel);
@@ -252,6 +264,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button FIFO;
+        private System.Windows.Forms.Button Pause;
     }
 }
 

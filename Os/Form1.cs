@@ -15,7 +15,7 @@ namespace Os
 {
     public partial class Form1 : Form
     {
-
+        private int whichone = 0;
         private Thread Tfifo = null;
         private Thread Tlru = null;
         private Thread Topt = null;
@@ -61,7 +61,7 @@ namespace Os
             
         }
 
-        //每一哥算法开始前，都应该进行一次restart操作。
+        //每一个算法开始前，都应该进行一次restart操作。
         private void restart()
         {
             
@@ -72,17 +72,19 @@ namespace Os
         private void button1_Click(object sender, EventArgs e)
         {
             //FIFO的代码
+            whichone = 1;
             FIFOPanel.BringToFront();//将FIFO的Panel送到前台；
             //首先更新ArrayList
             restart();
            
-            if (Tfifo==null||Tfifo.ThreadState.ToString()!="Running")
+            if (Tfifo==null||Tfifo.ThreadState.ToString()=="Unstart")
             {
                 Tfifo = new Thread(FIFOMethod);
                 Tfifo.Start();
             }
             
         }
+        //FIFO算法
         private void FIFOMethod()
         {
 
@@ -106,8 +108,6 @@ namespace Os
                         q.Enqueue(b);//加入队列
                         queye = true;//设置需要缺页中断的标志。
                     }
-                   
-                   
                 }
                 for (int j = 0; j < wulikuai + 2; j++)//行数
                 {
@@ -188,13 +188,11 @@ namespace Os
                         }
                    
                     }
-            
                 }
-
                 Sleep(TimeSpan.FromSeconds(1));
             }
         }
-     
+        //LRU算法
         private void LRUMethod()
         {
             LinkedList<int> q = new LinkedList<int>();
@@ -294,13 +292,14 @@ namespace Os
                     }
 
                 }
+                Sleep(TimeSpan.FromSeconds(1));
             }
 
         
 
 
         }
-
+        //OPT算法
         private void OPTMethod()
         {
             LinkedList<int> q = new LinkedList<int>();
@@ -403,6 +402,7 @@ namespace Os
                     }
 
                 }
+                Sleep(TimeSpan.FromSeconds(1));
             }
 
 
@@ -453,9 +453,11 @@ namespace Os
         }
         private void button2_Click(object sender, EventArgs e)
         {
+            whichone = 2;
             LRUPanel.BringToFront();
             restart();
-            if (Tlru==null||Tlru.ThreadState.ToString()!="Running")
+        
+            if (Tlru==null||Tlru.ThreadState.ToString()== "Unstarted")
             {
                 Tlru = new Thread(LRUMethod);
                 Tlru.Start();
@@ -474,12 +476,38 @@ namespace Os
 
         private void OPT_Click(object sender, EventArgs e)
         {
+            whichone = 3;
             OPTPanel.BringToFront();
             restart();
-            if (Topt==null||Topt.ThreadState.ToString()!="Running")
+            if (Topt==null||Topt.ThreadState.ToString() == "Unstarted")
             {
                 Topt = new Thread(OPTMethod);
                 Topt.Start();
+            }
+        }
+
+        private void Pause_Click(object sender, EventArgs e)
+        {
+            switch(whichone)
+            {
+                case 1:
+                    if (Tfifo.ThreadState.ToString() == "Suspended")
+                        Tfifo.Resume();
+                    else
+                        Tfifo.Suspend();
+                    break;
+                case 2:
+                    if (Tlru.ThreadState.ToString()=="Suspended")
+                        Tlru.Resume();
+                    else
+                        Tlru.Suspend();
+                    break;
+                case 3:
+                    if (Topt.ThreadState.ToString()=="Suspended")
+                        Topt.Resume();
+                    else
+                        Topt.Suspend();
+                    break;
             }
         }
     }
