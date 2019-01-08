@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Collections;
 using System.Data;
 using System.Drawing;
+using System.Threading;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace Os
     public partial class Form1 : Form
     {
         private int yemianshu = 0;
+        private Thread Tfifo = null;
         private ArrayList list = new ArrayList(); 
         public Form1()
         {
@@ -23,8 +25,11 @@ namespace Os
         private void Form1_Load(object sender, EventArgs e)
         {
             label3.Text = "页面访问序列：" + change();
-          //  Controls.Add(btn);
+            
         }
+
+
+        //change意义是更新List和标签
         private string change()
         {
             string result = "";
@@ -58,18 +63,48 @@ namespace Os
             int kuaishu = Request.NumsOfwulikuai;
             list.Clear();
             change();
-
-
-
         }
         private void button1_Click(object sender, EventArgs e)
         {
             //FIFO的代码
-            FIFOPanel.BringToFront();//更新注释
-
+            FIFOPanel.BringToFront();//将FIFO的Panel送到前台；
+            //首先更新ArrayList
+            restart();
+           
+            if (Tfifo==null||Tfifo.ThreadState.ToString()!="Running")
+            {
+                Tfifo = new Thread(FIFOMethod);
+                Tfifo.Start();
+            }
+            
         }
+        private void FIFOMethod()
+        {
+            Queue q = new Queue();
 
-    
+            int wulikuai = Request.NumsOfwulikuai;
+            CheckForIllegalCrossThreadCalls = false;
+            for (int i = 0; i <= list.Count; i++)//列数
+            {
+               
+                for (int j = 0; j < wulikuai + 2; j++)//行数
+                {
+                    Label lab = new Label();
+                    lab.Width = 25;//如果不声明这个宽度有问题！
+                    lab.Left = i * 25 + 50;
+                    lab.Top = j * 25;
+                    lab.Text = "4";
+                    this.Invoke(new Action(() =>
+                    {
+                        FIFOPanel.Controls.Add(lab);
+                    }
+                    ));
+                }
+              
+                }
+        }
+     
+        
 
         private void button2_Click(object sender, EventArgs e)
         {
