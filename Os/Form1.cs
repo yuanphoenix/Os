@@ -15,6 +15,7 @@ namespace Os
 {
     public partial class Form1 : Form
     {  
+       
         private int whichone = 0;
         private Thread Tfifo = null;
         private Thread Tlru = null;
@@ -23,12 +24,14 @@ namespace Os
         public Form1()
         {
             InitializeComponent();
+           
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             label3.Text = "页面访问序列：" + change();
-            
+            //this.WindowState = FormWindowState.Maximized;
+
         }
         //change意义是更新List和标签
         private string change()
@@ -52,12 +55,6 @@ namespace Os
         }
 
         //左上角的设置选项。
-        private void 设置ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Setting set = new Setting();
-            set.Show(this   );
-            
-        }
         public  void setlabel()
         {
             if (Request.kuaibiao)
@@ -179,6 +176,22 @@ namespace Os
         private void LRUPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        private void AllBegin_Click_1(object sender, EventArgs e)
+        {
+            All all = new All();
+           all. Show();
+        }
+
+        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Setting set = new Setting();
+            set.Show(this);
         }
     }
 }

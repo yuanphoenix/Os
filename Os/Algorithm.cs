@@ -51,7 +51,7 @@ namespace Os
                     for (int j = 0; j < wulikuai + 3; j++)//行数
                     {
                         Label lab = new Label();
-                      
+                        
                         if (i == 0)
                         {
                         lab = StyleLable(lab, 1, i, j);
@@ -111,10 +111,10 @@ namespace Os
                             }
                             else if (j <= wulikuai)
                             {
-                                if (j <= q.Count)
+                               if (j <= q.Count)
                                 {
-                                    lab.Text = num[j - 1].ToString();
-                                }
+                                 lab.Text = num[j - 1].ToString();
+                                 }
                             }
                             else
                             {
@@ -125,7 +125,7 @@ namespace Os
                                 }
                                 else//缺页率的计算
                                 {
-                                    //lab.Width = 30;
+                            
                                     lab.Text = ((double)(double)queyecishu / (double)(i) * 100).ToString();
                                 }
                             }
@@ -133,6 +133,7 @@ namespace Os
                             {
                             MyPanel.Invoke(new Action(() =>
                                 {
+                                    MyPanel.AutoScrollPosition = new Point(0, 0);
                                     MyPanel.Controls.Add(lab);
                                 }
                               ));
@@ -245,7 +246,7 @@ namespace Os
                                   }
                                  else//缺页率的计算
                                  {
-                                lab.Width = 30;
+                               
                                    lab.Text = ((double)(double)queyecishu / (double)(i) * 100).ToString();
                                 }
                               }
@@ -253,6 +254,7 @@ namespace Os
                             {
                             MyPanel.Invoke(new Action(() =>
                                 {
+                                    MyPanel.AutoScrollPosition = new Point(0, 0);
                                     MyPanel.Controls.Add(lab);
                                 }
                               ));
@@ -378,6 +380,7 @@ namespace Os
                         {
                             MyPanel.Invoke(new Action(() =>
                             {
+                                MyPanel.AutoScrollPosition = new Point(0, 0);
                                 MyPanel.Controls.Add(lab);
                             }
                           ));
@@ -438,15 +441,15 @@ namespace Os
                 case 1:
                     lab.Width = 60;//如果不声明这个宽度有问题！宽度还需要微调。
                     lab.Left = 30;
-                    lab.Top = j * 30+50;
+                    lab.Top = j * 25+40;
                     break;
                 case 2:
                     lab.Width =30;
                     lab.Left = i * 30 + 90;
-                    lab.Top = j * 30+50;
+                    lab.Top = j * 25+40;
                     break;
             }
-           
+          
             return lab;
         }
     }
