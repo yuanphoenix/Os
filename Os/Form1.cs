@@ -138,6 +138,7 @@ namespace Os
 
         private void Pause_Click(object sender, EventArgs e)
         {
+            //如果程序执行完，那么点击会报错。（程序未进行，无法将其挂起）
             switch(whichone)
             {
                 case 1:
@@ -159,6 +160,12 @@ namespace Os
                         Topt.Suspend();
                     break;
             }
+        }
+
+
+        private void FrmMain_FormClosing(object sender, FormClosedEventArgs e)
+        {
+            System.Environment.Exit(0);
         }
     }
 }

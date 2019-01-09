@@ -222,6 +222,7 @@
             this.Controls.Add(this.menuStrip2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.FIFOPanel.ResumeLayout(false);
             this.FIFOPanel.PerformLayout();

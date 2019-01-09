@@ -46,14 +46,11 @@ namespace Os
                     for (int j = 0; j < wulikuai + 3; j++)//行数
                     {
                         Label lab = new Label();
-                        lab.Left = 50;
-                        lab.Top = j * 30;
+                      
                         if (i == 0)
                         {
-                            lab.Width = 60;//如果不声明这个宽度有问题！宽度还需要微调。
-                            lab.Left = 30;
-                            lab.Top = j * 30;
-                            if (j == 0)
+                        lab = StyleLable(lab, 1, i, j);
+                        if (j == 0)
                             {
                                 lab.Text = "访问序列";
                             MyPanel.Invoke(new Action(() =>
@@ -96,9 +93,7 @@ namespace Os
                         }
                         else
                         {
-                            lab.Width = 15;
-                            lab.Left = i * 30 + 90;
-                            lab.Top = j * 30;
+                        lab = StyleLable(lab, 2, i, j);
                             if (q.Count > Request.NumsOfwulikuai)
                             {
                                 q.Dequeue();
@@ -125,7 +120,7 @@ namespace Os
                                 }
                                 else//缺页率的计算
                                 {
-                                    lab.Width = 30;
+                                    //lab.Width = 30;
                                     lab.Text = ((double)(double)queyecishu / (double)(i) * 100).ToString();
                                 }
                             }
@@ -147,10 +142,9 @@ namespace Os
 
           public void Algorithm_LRU()
         {
-          
-                LinkedList<int> q = new LinkedList<int>();
-
-                int wulikuai = Request.NumsOfwulikuai;
+            LinkedList<int> q = new LinkedList<int>();
+            int queyecishu = 0;
+            int wulikuai = Request.NumsOfwulikuai;
                 for (int i = 0; i <= list.Count; i++)
                 {
                     bool queye = true;
@@ -160,23 +154,22 @@ namespace Os
                         int b = Convert.ToInt32(a);
 
                         if (q.Contains(b))
-                        {
+                        {  
                             queye = false;
                             q.Remove(b);
                         }
                         q.AddFirst(b);
-
+                    if (queye)//如果缺页，那么增加缺页次数
+                        queyecishu++;
+              
                     }
-                    for (int j = 0; j < wulikuai + 2; j++)
+                    for (int j = 0; j < wulikuai + 3; j++)
                     {
                         Label lab = new Label();
-                        lab.Left = 50;
-                        lab.Top = j * 30;
+                       
                         if (i == 0)
                         {
-                            lab.Width = 60;//如果不声明这个宽度有问题！宽度还需要微调。
-                            lab.Left = 30;
-                            lab.Top = j * 30;
+                        lab = StyleLable(lab, 1, i, j);
                             if (j == 0)
                             {
                                 lab.Text = "访问序列";
@@ -197,20 +190,30 @@ namespace Os
                             }
                             else
                             {
+                            if (j == wulikuai + 1)
+                            {
                                 lab.Text = "是否缺页";
-                            MyPanel.Invoke(new Action(() =>
+                                MyPanel.Invoke(new Action(() =>
                                 {
                                     MyPanel.Controls.Add(lab);
                                 }
-                      ));
+                          ));
                             }
+                            else
+                            {
+                                lab.Text = "缺页率";
+                                MyPanel.Invoke(new Action(() =>
+                                {
+                                    MyPanel.Controls.Add(lab);
+                                }
+                          ));
+                            }
+                        }
                         }
                         else
                         {
-                            lab.Width = 10;
-                            lab.Left = i * 20 + 90;
-                            lab.Top = j * 30;
-                            if (q.Count > wulikuai)
+                        lab = StyleLable(lab, 2, i, j);
+                        if (q.Count > wulikuai)
                             {
                                 q.RemoveLast();
                             }
@@ -229,11 +232,17 @@ namespace Os
                             }
                             else
                             {
-                                if (queye)
-                                {
-                                    lab.Text = "√";
+                                    if (j == wulikuai + 1)
+                                 {
+                                        if (queye)
+                                           lab.Text = "√";
+                                  }
+                                 else//缺页率的计算
+                                 {
+                                lab.Width = 30;
+                                   lab.Text = ((double)(double)queyecishu / (double)(i) * 100).ToString();
                                 }
-                            }
+                              }
                             if (MyPanel.IsHandleCreated)
                             {
                             MyPanel.Invoke(new Action(() =>
@@ -257,7 +266,7 @@ namespace Os
           public void Algorithm_OPT()
         {
             LinkedList<int> q = new LinkedList<int>();
-
+            int queyecishu = 0;
             int wulikuai = Request.NumsOfwulikuai;
             for (int i = 0; i <= list.Count; i++)
             {
@@ -273,6 +282,7 @@ namespace Os
                     }
                     else//不包含，那么需要有页面出来
                     {
+                        queyecishu++;
                         if (q.Count == wulikuai)
                         {
                             int[] nums = q.ToArray();
@@ -282,15 +292,13 @@ namespace Os
                     }
 
                 }
-                for (int j = 0; j < wulikuai + 2; j++)
+                for (int j = 0; j < wulikuai + 3; j++)
                 {
                     Label lab = new Label();
 
                     if (i == 0)
                     {
-                        lab.Width = 60;//如果不声明这个宽度有问题！宽度还需要微调。
-                        lab.Left = 30;
-                        lab.Top = j * 30;
+                        lab = StyleLable(lab, 1, i, j);
                         if (j == 0)
                         {
                             lab.Text = "访问序列";
@@ -311,20 +319,29 @@ namespace Os
                         }
                         else
                         {
-                            lab.Text = "是否缺页";
-                            MyPanel.Invoke(new Action(() =>
+                            if (j == wulikuai + 1)
                             {
-                                MyPanel.Controls.Add(lab);
+                                lab.Text = "是否缺页";
+                                MyPanel.Invoke(new Action(() =>
+                                {
+                                    MyPanel.Controls.Add(lab);
+                                }
+                          ));
                             }
-                  ));
+                            else
+                            {
+                                lab.Text = "缺页率";
+                                MyPanel.Invoke(new Action(() =>
+                                {
+                                    MyPanel.Controls.Add(lab);
+                                }
+                          ));
+                            }
                         }
                     }
                     else
                     {
-                        lab.Width = 10;
-                        lab.Left = i * 20 + 90;
-                        lab.Top = j * 30;
-
+                        lab = StyleLable(lab, 2, i, j);
                         int[] num = q.ToArray();
                         if (j == 0)
                         {
@@ -340,9 +357,15 @@ namespace Os
                         }
                         else
                         {
-                            if (queye)
+                            if (j == wulikuai + 1)
                             {
-                                lab.Text = "√";
+                                if (queye)
+                                    lab.Text = "√";
+                            }
+                            else//缺页率的计算
+                            {
+
+                                lab.Text = ((double)(double)queyecishu / (double)(i) * 100).ToString();
                             }
                         }
                         if (MyPanel.IsHandleCreated)
@@ -402,6 +425,26 @@ namespace Os
                 }
             }
             return nums[fanhui];
+        }
+
+
+          private Label StyleLable(Label lab,int index,int i,int j)
+        {
+            switch (index)
+            {
+                case 1:
+                    lab.Width = 60;//如果不声明这个宽度有问题！宽度还需要微调。
+                    lab.Left = 30;
+                    lab.Top = j * 30;
+                    break;
+                case 2:
+                    lab.Width =30;
+                    lab.Left = i * 30 + 90;
+                    lab.Top = j * 30;
+                    break;
+            }
+           
+            return lab;
         }
     }
 }
