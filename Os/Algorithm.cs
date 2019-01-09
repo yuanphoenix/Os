@@ -20,7 +20,12 @@ namespace Os
     {
         public Panel MyPanel;
         public ArrayList list;
-          public void Algorithm_FIFO()
+        private int WithKuai = Request.TimeOfkuaibiao + Request.TimeOfneicun;
+        private int WithKuai_queye = Request.TimeOfkuaibiao +Request.NumsOfneicun+ Request.TimeOfqueye + Request.TimeOfkuaibiao + Request.TimeOfneicun + Request.TimeOfneicun;
+        private int WithoutKuai = Request.TimeOfneicun * 2;
+        private int WithoutKuai_queye = Request.TimeOfneicun + Request.TimeOfqueye + Request.TimeOfneicun * 2;
+
+        public void Algorithm_FIFO()
         { 
                 //这个q是物理块的队列。
                 Queue<int> q = new Queue<int>();
@@ -142,6 +147,7 @@ namespace Os
 
           public void Algorithm_LRU()
         {
+            int time = 0;
             LinkedList<int> q = new LinkedList<int>();
             int queyecishu = 0;
             int wulikuai = Request.NumsOfwulikuai;
@@ -382,7 +388,6 @@ namespace Os
                 Sleep(TimeSpan.FromSeconds(1));
             }
         }
-
           private int DeleteOpt(int index, int[] nums)
         {
 
@@ -426,8 +431,6 @@ namespace Os
             }
             return nums[fanhui];
         }
-
-
           private Label StyleLable(Label lab,int index,int i,int j)
         {
             switch (index)
@@ -435,12 +438,12 @@ namespace Os
                 case 1:
                     lab.Width = 60;//如果不声明这个宽度有问题！宽度还需要微调。
                     lab.Left = 30;
-                    lab.Top = j * 30;
+                    lab.Top = j * 30+50;
                     break;
                 case 2:
                     lab.Width =30;
                     lab.Left = i * 30 + 90;
-                    lab.Top = j * 30;
+                    lab.Top = j * 30+50;
                     break;
             }
            

@@ -15,12 +15,14 @@ namespace Os
     {
         public Setting()
         {
+           
             InitializeComponent();
         }
        private char[] letter = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','0','1','2','3','4','5','6','7','8','9' };
 
         private void Setting_Load(object sender, EventArgs e)
         {
+            checkBox1.Checked = Request.kuaibiao;
             kuaibiaoshijian.Text = Request.TimeOfkuaibiao.ToString();
             neicunshijian.Text = Request.TimeOfneicun.ToString();
             neiucnshuliang.Text = Request.NumsOfwulikuai.ToString();
@@ -70,22 +72,14 @@ namespace Os
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Form1 f1 = (Form1)this.Owner;
+            f1.setlabel();
+
             Request.TimeOfkuaibiao = Convert.ToInt32(kuaibiaoshijian.Text);
             Request.TimeOfneicun = Convert.ToInt32(neicunshijian.Text);
             Request.TimeOfqueye = Convert.ToInt32(queyeshijian.Text);
             Request.NumsOfneicun = Convert.ToInt32(yemianshuliang.Text);//页面数量比较大
-            Request.NumsOfwulikuai = Convert.ToInt32(neiucnshuliang.Text);//内存块的数量
-                                                                          /* MessageBox.Show(Request.TimeOfkuaibiao.ToString());
-                                                                           MessageBox.Show(Request.TimeOfneicun.ToString());
-                                                                           MessageBox.Show(Request.TimeOfqueye.ToString());
-                                                                           MessageBox.Show(Request.NumsOfneicun.ToString());
-                                                                           MessageBox.Show(Request.NumsOfwulikuai.ToString());
-                                                                           if(Request.kuaibiao)
-                                                                           {
-                                                                               MessageBox.Show("选");
-                                                                           }
-                                                                           else { MessageBox.Show("没选"); }*/
-
+            Request.NumsOfwulikuai = Convert.ToInt32(neiucnshuliang.Text);//内存块的数量 
             this.Close();
         }
 
@@ -93,7 +87,7 @@ namespace Os
         {
 
         }
-
+   
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 

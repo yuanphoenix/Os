@@ -35,25 +35,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.OPTPanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.LFUPanel = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.LRUPanel = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.FIFO = new System.Windows.Forms.Button();
             this.Pause = new System.Windows.Forms.Button();
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.acce = new System.Windows.Forms.Label();
             this.FIFOPanel.SuspendLayout();
             this.OPTPanel.SuspendLayout();
-            this.LFUPanel.SuspendLayout();
             this.LRUPanel.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // LRU
             // 
-            this.LRU.Location = new System.Drawing.Point(225, 28);
+            this.LRU.Location = new System.Drawing.Point(149, 28);
             this.LRU.Name = "LRU";
             this.LRU.Size = new System.Drawing.Size(99, 74);
             this.LRU.TabIndex = 3;
@@ -63,7 +61,7 @@
             // 
             // OPT
             // 
-            this.OPT.Location = new System.Drawing.Point(406, 28);
+            this.OPT.Location = new System.Drawing.Point(254, 28);
             this.OPT.Name = "OPT";
             this.OPT.Size = new System.Drawing.Size(99, 74);
             this.OPT.TabIndex = 4;
@@ -73,7 +71,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(587, 28);
+            this.button4.Location = new System.Drawing.Point(359, 28);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(99, 74);
             this.button4.TabIndex = 5;
@@ -84,7 +82,7 @@
             // 
             this.FIFOPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.FIFOPanel.Controls.Add(this.label1);
-            this.FIFOPanel.Location = new System.Drawing.Point(0, 154);
+            this.FIFOPanel.Location = new System.Drawing.Point(10, 246);
             this.FIFOPanel.Name = "FIFOPanel";
             this.FIFOPanel.Size = new System.Drawing.Size(1181, 534);
             this.FIFOPanel.TabIndex = 6;
@@ -103,7 +101,7 @@
             // 
             this.OPTPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.OPTPanel.Controls.Add(this.label4);
-            this.OPTPanel.Location = new System.Drawing.Point(0, 154);
+            this.OPTPanel.Location = new System.Drawing.Point(78, 209);
             this.OPTPanel.Name = "OPTPanel";
             this.OPTPanel.Size = new System.Drawing.Size(1181, 534);
             this.OPTPanel.TabIndex = 7;
@@ -118,28 +116,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "OPT";
             // 
-            // LFUPanel
-            // 
-            this.LFUPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LFUPanel.Controls.Add(this.label5);
-            this.LFUPanel.Location = new System.Drawing.Point(0, 154);
-            this.LFUPanel.Name = "LFUPanel";
-            this.LFUPanel.Size = new System.Drawing.Size(1181, 534);
-            this.LFUPanel.TabIndex = 7;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.Control;
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Location = new System.Drawing.Point(13, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 17);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "LFU";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label3
             // 
             this.label3.Location = new System.Drawing.Point(29, 117);
@@ -147,24 +123,29 @@
             this.label3.Size = new System.Drawing.Size(912, 23);
             this.label3.TabIndex = 7;
             this.label3.Text = "页面访问序列：";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // LRUPanel
             // 
             this.LRUPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LRUPanel.Controls.Add(this.label2);
+            this.LRUPanel.Controls.Add(this.label5);
+            this.LRUPanel.Controls.Add(this.OPTPanel);
+            this.LRUPanel.Controls.Add(this.FIFOPanel);
             this.LRUPanel.Location = new System.Drawing.Point(0, 154);
             this.LRUPanel.Name = "LRUPanel";
             this.LRUPanel.Size = new System.Drawing.Size(1181, 534);
             this.LRUPanel.TabIndex = 7;
+            this.LRUPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LRUPanel_Paint);
             // 
-            // label2
+            // label5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 15);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "LRU";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 15);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "LRU算法用时";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // FIFO
             // 
@@ -178,7 +159,7 @@
             // 
             // Pause
             // 
-            this.Pause.Location = new System.Drawing.Point(746, 69);
+            this.Pause.Location = new System.Drawing.Point(464, 31);
             this.Pause.Name = "Pause";
             this.Pause.Size = new System.Drawing.Size(101, 33);
             this.Pause.TabIndex = 8;
@@ -204,19 +185,26 @@
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
+            // acce
+            // 
+            this.acce.AutoSize = true;
+            this.acce.Location = new System.Drawing.Point(465, 86);
+            this.acce.Name = "acce";
+            this.acce.Size = new System.Drawing.Size(82, 15);
+            this.acce.TabIndex = 9;
+            this.acce.Text = "快表已开启";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 669);
+            this.Controls.Add(this.acce);
             this.Controls.Add(this.Pause);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.LFUPanel);
             this.Controls.Add(this.OPT);
-            this.Controls.Add(this.OPTPanel);
             this.Controls.Add(this.LRU);
-            this.Controls.Add(this.FIFOPanel);
             this.Controls.Add(this.FIFO);
             this.Controls.Add(this.LRUPanel);
             this.Controls.Add(this.menuStrip2);
@@ -228,8 +216,6 @@
             this.FIFOPanel.PerformLayout();
             this.OPTPanel.ResumeLayout(false);
             this.OPTPanel.PerformLayout();
-            this.LFUPanel.ResumeLayout(false);
-            this.LFUPanel.PerformLayout();
             this.LRUPanel.ResumeLayout(false);
             this.LRUPanel.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
@@ -247,15 +233,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel LRUPanel;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel OPTPanel;
-        private System.Windows.Forms.Panel LFUPanel;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button FIFO;
         private System.Windows.Forms.Button Pause;
         private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label acce;
     }
 }
 

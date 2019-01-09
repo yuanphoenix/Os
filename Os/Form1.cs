@@ -14,13 +14,8 @@ using System.Windows.Forms;
 namespace Os
 {
     public partial class Form1 : Form
-    {
-      
+    {  
         private int whichone = 0;
-        private int WithKuai = Request.TimeOfkuaibiao + Request.TimeOfneicun;
-        private int WithKuai_queye = Request.TimeOfkuaibiao + Request.TimeOfqueye + Request.TimeOfkuaibiao + Request.TimeOfneicun + Request.TimeOfneicun;
-        private int WithoutKuai = Request.TimeOfneicun * 2;
-        private int WithoutKuai_queye = Request.TimeOfneicun + Request.TimeOfqueye + Request.TimeOfneicun * 2;
         private Thread Tfifo = null;
         private Thread Tlru = null;
         private Thread Topt = null;
@@ -35,8 +30,6 @@ namespace Os
             label3.Text = "页面访问序列：" + change();
             
         }
-
-
         //change意义是更新List和标签
         private string change()
         {
@@ -62,10 +55,17 @@ namespace Os
         private void 设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Setting set = new Setting();
-            set.Show();
+            set.Show(this   );
             
         }
-
+        public  void setlabel()
+        {
+            if (Request.kuaibiao)
+                acce.Text = "快表已开启";
+            else
+                acce.Text = "快表已关闭";
+            acce.Refresh();
+        }
         //每一个算法开始前，都应该进行一次restart操作。
         private void restart()
         {
@@ -93,8 +93,7 @@ namespace Os
             }
             
         }
-        //FIFO算法
- 
+         //FIFO算法
         private void button2_Click(object sender, EventArgs e)
         {
             whichone = 2;
@@ -162,10 +161,24 @@ namespace Os
             }
         }
 
-
         private void FrmMain_FormClosing(object sender, FormClosedEventArgs e)
         {
             System.Environment.Exit(0);
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LRUPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
