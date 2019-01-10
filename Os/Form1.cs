@@ -109,9 +109,16 @@ namespace Os
            
             if (Tfifo==null||Tfifo.ThreadState.ToString()=="Unstart")
             {
+                Label lab = new Label();
+                lab.Name = "label1";
+                lab.Top = 13;
+                lab.Left = 17;
+                lab.AutoSize = true;
+               
+                FIFOPanel.Controls.Add(lab);
                 Algorithm algorithm = new Algorithm();
                 algorithm.MyPanel = FIFOPanel;
-                algorithm.label = label1;
+                algorithm.label = lab;
                 algorithm.list = list;
                 // Tfifo = new Thread(FIFOMethod);
                 Tfifo = new Thread(algorithm.Algorithm_FIFO);
@@ -128,10 +135,16 @@ namespace Os
         
             if (Tlru==null||Tlru.ThreadState.ToString()== "Unstarted")
             {
+                Label lab = new Label();
+                lab.Name = "label2";
+                lab.Top = 13;
+                lab.Left = 17;
+                lab.AutoSize = true;
+                LRUPanel.Controls.Add(lab);
                 Algorithm algorithm = new Algorithm();
                 algorithm.MyPanel = LRUPanel;
                 algorithm.list = list;
-                algorithm.label = label5;
+                algorithm.label = lab;
                 Tlru = new Thread(algorithm.Algorithm_LRU);
                 Tlru.Start();
             }
@@ -154,10 +167,16 @@ namespace Os
             restart();
             if (Topt==null||Topt.ThreadState.ToString() == "Unstarted")
             {
+                Label lab = new Label();
+                lab.Name = "label3";
+                lab.Top = 13;
+                lab.Left = 17;
+                lab.AutoSize = true;
+                OPTPanel.Controls.Add(lab);
                 Algorithm algorithm = new Algorithm();
                 algorithm.MyPanel = OPTPanel;
                 algorithm.list = list;
-                algorithm.label = label4;
+                algorithm.label = lab;
                 Topt = new Thread(algorithm.Algorithm_OPT);
                 Topt.Start();
             }
@@ -214,17 +233,16 @@ namespace Os
            all. Show(this);
         }
 
-        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
 
-        }
-
+        //打开《图示》界面。
         private void button1_Click_1(object sender, EventArgs e)
         {
             Setting set = new Setting();
             set.Show(this);
         }
 
+
+        //这个按钮是为了保存Panel的图像。
         private void button2_Click_1(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();

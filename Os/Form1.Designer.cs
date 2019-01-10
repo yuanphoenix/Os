@@ -32,21 +32,15 @@
             this.OPT = new System.Windows.Forms.Button();
             this.AllBegin = new System.Windows.Forms.Button();
             this.FIFOPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.OPTPanel = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.LRUPanel = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.FIFO = new System.Windows.Forms.Button();
             this.Pause = new System.Windows.Forms.Button();
             this.acce = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.FIFOPanel.SuspendLayout();
-            this.OPTPanel.SuspendLayout();
-            this.LRUPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // LRU
@@ -83,41 +77,21 @@
             // 
             this.FIFOPanel.AutoScroll = true;
             this.FIFOPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.FIFOPanel.Controls.Add(this.label1);
             this.FIFOPanel.Location = new System.Drawing.Point(132, 57);
             this.FIFOPanel.Name = "FIFOPanel";
             this.FIFOPanel.Size = new System.Drawing.Size(1170, 240);
             this.FIFOPanel.TabIndex = 6;
             this.FIFOPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "FIFO算法用时";
-            // 
             // OPTPanel
             // 
             this.OPTPanel.AutoScroll = true;
             this.OPTPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.OPTPanel.Controls.Add(this.label4);
             this.OPTPanel.Location = new System.Drawing.Point(132, 553);
             this.OPTPanel.Name = "OPTPanel";
             this.OPTPanel.Size = new System.Drawing.Size(1170, 240);
             this.OPTPanel.TabIndex = 7;
             this.OPTPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 15);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "OPT算法用时";
             // 
             // label3
             // 
@@ -133,22 +107,11 @@
             // 
             this.LRUPanel.AutoScroll = true;
             this.LRUPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LRUPanel.Controls.Add(this.label5);
             this.LRUPanel.Location = new System.Drawing.Point(132, 307);
             this.LRUPanel.Name = "LRUPanel";
             this.LRUPanel.Size = new System.Drawing.Size(1170, 240);
             this.LRUPanel.TabIndex = 7;
             this.LRUPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LRUPanel_Paint);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 15);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "LRU算法用时";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // FIFO
             // 
@@ -233,12 +196,6 @@
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.FIFOPanel.ResumeLayout(false);
-            this.FIFOPanel.PerformLayout();
-            this.OPTPanel.ResumeLayout(false);
-            this.OPTPanel.PerformLayout();
-            this.LRUPanel.ResumeLayout(false);
-            this.LRUPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,13 +208,10 @@
         private System.Windows.Forms.Panel FIFOPanel;
         private System.Windows.Forms.Panel LRUPanel;
         private System.Windows.Forms.Panel OPTPanel;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button FIFO;
         private System.Windows.Forms.Button Pause;
-        private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label acce;
         private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

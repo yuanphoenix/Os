@@ -128,6 +128,7 @@ namespace Os
                                 }
                                 else//缺页率的计算
                                 {
+                                    //在label中显式缺页率，同时传给Request的静态变量。
                                     double jieguo= (double)queyecishu / (double)(i) * 100;
                                     lab.Text = ((double)(double)queyecishu / (double)(i) * 100).ToString();
                                     Request.test_FIFO.Add(jieguo);
