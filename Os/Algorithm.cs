@@ -22,7 +22,7 @@ namespace Os
         public ArrayList list;
         public Label label;
         private int WithKuai = Request.TimeOfkuaibiao + Request.TimeOfneicun;
-        private int WithKuai_queye = Request.TimeOfkuaibiao +Request.NumsOfneicun+ Request.TimeOfqueye + Request.TimeOfkuaibiao + Request.TimeOfneicun + Request.TimeOfneicun;
+        private int WithKuai_queye = Request.TimeOfkuaibiao +Request.TimeOfneicun+ Request.TimeOfqueye + Request.TimeOfkuaibiao + Request.TimeOfneicun + Request.TimeOfneicun;
         private int WithoutKuai = Request.TimeOfneicun * 2;
         private int WithoutKuai_queye = Request.TimeOfneicun + Request.TimeOfqueye + Request.TimeOfneicun * 2;
 
@@ -38,11 +38,13 @@ namespace Os
                 {
                     //设置是否缺页的标志
                     bool queye = false;
+                //这个b的值为当前将要置换的值，底下是为了初始化，没什么意义。
+                    int b =0;
                     if (i != 0)
                     {
                         //只能这样转换，否则会产生错误。
                         String a = Convert.ToString(list[i - 1]);
-                        int b = Convert.ToInt32(a);
+                        b = Convert.ToInt32(a);
                         if (!q.Contains(b))
                         {
                             q.Enqueue(b);//加入队列
@@ -52,8 +54,7 @@ namespace Os
                     }
                     for (int j = 0; j < wulikuai + 3; j++)//行数
                     {
-                        Label lab = new Label();
-                        
+                        Label lab = new Label();        
                         if (i == 0)
                         {
                         lab = StyleLable(lab, 1, i, j);
@@ -116,6 +117,11 @@ namespace Os
                             {
                                if (j <= q.Count)
                                 {
+                                    //这里应该设置label的颜色
+                                    if (queye&&num[j-1]==b)
+                                    {
+                                        lab.ForeColor = Color.Red;
+                                    }
                                  lab.Text = num[j - 1].ToString();
                                  }
                             }
@@ -163,13 +169,14 @@ namespace Os
             LinkedList<int> q = new LinkedList<int>();
             int queyecishu = 0;
             int wulikuai = Request.NumsOfwulikuai;
+            int b = 0;
                 for (int i = 0; i <= list.Count; i++)
                 {
                     bool queye = true;
                     if (i != 0)
                     {
                         String a = Convert.ToString(list[i - 1]);
-                        int b = Convert.ToInt32(a);
+                        b = Convert.ToInt32(a);
 
                         if (q.Contains(b))
                         {  
@@ -244,6 +251,10 @@ namespace Os
                             {
                                 if (j <= q.Count)
                                 {
+                                    if (queye&&b==num[j-1])
+                                    {
+                                        lab.ForeColor = Color.Red;
+                                    }
                                     lab.Text = num[j - 1].ToString();
                                 }
 
@@ -289,6 +300,7 @@ namespace Os
             LinkedList<int> q = new LinkedList<int>();
             int queyecishu = 0;
             int time = 0;
+            int b = 0;
             int wulikuai = Request.NumsOfwulikuai;
             for (int i = 0; i <= list.Count; i++)
             {
@@ -296,7 +308,7 @@ namespace Os
                 if (i != 0)
                 {
                     String a = Convert.ToString(list[i - 1]);
-                    int b = Convert.ToInt32(a);
+                    b = Convert.ToInt32(a);
 
                     if (q.Contains(b))
                     {
@@ -373,6 +385,10 @@ namespace Os
                         {
                             if (j <= q.Count)
                             {
+                                if (queye&&b==num[j-1])
+                                {
+                                    lab.ForeColor = Color.Red;
+                                }
                                 lab.Text = num[j - 1].ToString();
                             }
 
@@ -420,6 +436,7 @@ namespace Os
                 if (queye)
                 {
                     time += WithKuai_queye;
+           
                     label.Text =name+ WithKuai_queye.ToString() + "ns，总用时 "+time+"ns" ;
                    
                 }
