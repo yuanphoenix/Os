@@ -20,6 +20,7 @@ namespace Os
     {
         public Panel MyPanel;
         public ArrayList list;
+        public Label label;
         private int WithKuai = Request.TimeOfkuaibiao + Request.TimeOfneicun;
         private int WithKuai_queye = Request.TimeOfkuaibiao +Request.NumsOfneicun+ Request.TimeOfqueye + Request.TimeOfkuaibiao + Request.TimeOfneicun + Request.TimeOfneicun;
         private int WithoutKuai = Request.TimeOfneicun * 2;
@@ -29,7 +30,7 @@ namespace Os
         { 
                 //这个q是物理块的队列。
                 Queue<int> q = new Queue<int>();
-
+                 int time = 0;
                 int wulikuai = Request.NumsOfwulikuai;
                 int queyecishu = 0;
                 for (int i = 0; i <= list.Count; i++)//列数
@@ -60,6 +61,7 @@ namespace Os
                                 lab.Text = "访问序列";
                             MyPanel.Invoke(new Action(() =>
                                 {
+                                    label.Text = "Hello";
                                     MyPanel.Controls.Add(lab);
                                 }
                       ));
@@ -98,7 +100,7 @@ namespace Os
                         }
                         else
                         {
-                        lab = StyleLable(lab, 2, i, j);
+                             lab = StyleLable(lab, 2, i, j);
                             if (q.Count > Request.NumsOfwulikuai)
                             {
                                 q.Dequeue();
@@ -125,7 +127,6 @@ namespace Os
                                 }
                                 else//缺页率的计算
                                 {
-                            
                                     lab.Text = ((double)(double)queyecishu / (double)(i) * 100).ToString();
                                 }
                             }
@@ -141,7 +142,13 @@ namespace Os
 
                         }
                     }
-                    Sleep(TimeSpan.FromSeconds(1));
+                MyPanel.Invoke(new Action(() =>
+                {
+                    time = FlashTime("FIFO算法时间 ", queye, time);
+                }
+                   ));
+                Sleep(TimeSpan.FromSeconds(1));
+
                 }
             
         }
@@ -246,7 +253,6 @@ namespace Os
                                   }
                                  else//缺页率的计算
                                  {
-                               
                                    lab.Text = ((double)(double)queyecishu / (double)(i) * 100).ToString();
                                 }
                               }
@@ -262,7 +268,13 @@ namespace Os
                         }
 
                     }
-                    Sleep(TimeSpan.FromSeconds(1));
+                MyPanel.Invoke(new Action(() =>
+                {
+                    time = FlashTime("LRU算法时间 ", queye, time);
+
+                }
+             ));
+                Sleep(TimeSpan.FromSeconds(1));
                 }
 
 
@@ -275,6 +287,7 @@ namespace Os
         {
             LinkedList<int> q = new LinkedList<int>();
             int queyecishu = 0;
+            int time = 0;
             int wulikuai = Request.NumsOfwulikuai;
             for (int i = 0; i <= list.Count; i++)
             {
@@ -388,8 +401,50 @@ namespace Os
                     }
 
                 }
+                MyPanel.Invoke(new Action(() =>
+                {
+                    time=FlashTime("OPT算法时间 ", queye, time);
+                }
+                 ));
                 Sleep(TimeSpan.FromSeconds(1));
             }
+        }
+
+          private int FlashTime(String name,bool queye,int time)
+        {
+            
+            if (Request.kuaibiao)
+            {
+                if (queye)
+                {
+                    time += WithKuai_queye;
+                    label.Text =name+ WithKuai_queye.ToString() + "ns，总用时 "+time+"ns" ;
+                   
+                }
+                else
+                {
+                    time += WithKuai; ;
+                    label.Text = name+ WithKuai.ToString() + "ns，总用时 " + time + "ns";
+                    
+                }
+            }
+            else
+            {
+                if (queye)
+                {
+                    time += WithoutKuai_queye;
+                    label.Text =name + WithoutKuai_queye.ToString() + "ns，总用时 " + time + "ns";
+                   
+                }
+                else
+                {
+                    time += WithoutKuai;
+                    label.Text = name + WithoutKuai.ToString() + "ns，总用时 " + time + "ns";
+                   
+                }
+
+            }
+            return time;
         }
           private int DeleteOpt(int index, int[] nums)
         {

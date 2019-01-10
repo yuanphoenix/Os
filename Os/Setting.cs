@@ -18,7 +18,7 @@ namespace Os
            
             InitializeComponent();
         }
-       private char[] letter = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','0','1','2','3','4','5','6','7','8','9' };
+       private char[] letter = new char[] { 'A', 'B', 'C', 'D', 'E', 'F','0','1','2','3','4','5','6','7','8','9' };
 
         private void Setting_Load(object sender, EventArgs e)
         {
@@ -74,7 +74,6 @@ namespace Os
         {
             Form1 f1 = (Form1)this.Owner;
             f1.setlabel();
-
             Request.TimeOfkuaibiao = Convert.ToInt32(kuaibiaoshijian.Text);
             Request.TimeOfneicun = Convert.ToInt32(neicunshijian.Text);
             Request.TimeOfqueye = Convert.ToInt32(queyeshijian.Text);

@@ -33,6 +33,11 @@ namespace Os
             //this.WindowState = FormWindowState.Maximized;
 
         }
+
+        public void set()
+        {
+            label1.Text = "HEllp";
+        }
         //change意义是更新List和标签
         private string change()
         {
@@ -83,6 +88,7 @@ namespace Os
             {
                 Algorithm algorithm = new Algorithm();
                 algorithm.MyPanel = FIFOPanel;
+                algorithm.label = label1;
                 algorithm.list = list;
                 // Tfifo = new Thread(FIFOMethod);
                 Tfifo = new Thread(algorithm.Algorithm_FIFO);
@@ -102,6 +108,7 @@ namespace Os
                 Algorithm algorithm = new Algorithm();
                 algorithm.MyPanel = LRUPanel;
                 algorithm.list = list;
+                algorithm.label = label5;
                 Tlru = new Thread(algorithm.Algorithm_LRU);
                 Tlru.Start();
             }
@@ -127,6 +134,7 @@ namespace Os
                 Algorithm algorithm = new Algorithm();
                 algorithm.MyPanel = OPTPanel;
                 algorithm.list = list;
+                algorithm.label = label4;
                 Topt = new Thread(algorithm.Algorithm_OPT);
                 Topt.Start();
             }

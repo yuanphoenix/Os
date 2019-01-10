@@ -103,7 +103,7 @@
             this.OPTPanel.AutoScroll = true;
             this.OPTPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.OPTPanel.Controls.Add(this.label4);
-            this.OPTPanel.Location = new System.Drawing.Point(132, 576);
+            this.OPTPanel.Location = new System.Drawing.Point(132, 553);
             this.OPTPanel.Name = "OPTPanel";
             this.OPTPanel.Size = new System.Drawing.Size(1170, 240);
             this.OPTPanel.TabIndex = 7;
@@ -173,7 +173,7 @@
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1222, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(1222, 24);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
@@ -201,7 +201,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1222, 952);
+            this.ClientSize = new System.Drawing.Size(1222, 805);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.acce);
             this.Controls.Add(this.OPTPanel);
@@ -234,7 +234,6 @@
         private System.Windows.Forms.Button OPT;
         private System.Windows.Forms.Button AllBegin;
         private System.Windows.Forms.Panel FIFOPanel;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel LRUPanel;
         private System.Windows.Forms.Panel OPTPanel;
@@ -245,6 +244,7 @@
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label acce;
         private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Label label1;
     }
 }
 
