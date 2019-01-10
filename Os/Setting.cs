@@ -73,12 +73,13 @@ namespace Os
         private void button1_Click(object sender, EventArgs e)
         {
             Form1 f1 = (Form1)this.Owner;
-            f1.setlabel();
+            Request.xulie = Convert.ToString(xuliedizhi.Text);
             Request.TimeOfkuaibiao = Convert.ToInt32(kuaibiaoshijian.Text);
             Request.TimeOfneicun = Convert.ToInt32(neicunshijian.Text);
             Request.TimeOfqueye = Convert.ToInt32(queyeshijian.Text);
             Request.NumsOfneicun = Convert.ToInt32(yemianshuliang.Text);//页面数量比较大
-            Request.NumsOfwulikuai = Convert.ToInt32(neiucnshuliang.Text);//内存块的数量 
+            Request.NumsOfwulikuai = Convert.ToInt32(neiucnshuliang.Text);//内存块的数量
+            f1.setlabel();
             this.Close();
         }
 

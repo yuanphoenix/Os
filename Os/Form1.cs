@@ -15,7 +15,6 @@ namespace Os
 {
     public partial class Form1 : Form
     {  
-       
         private int whichone = 0;
         private Thread Tfifo = null;
         private Thread Tlru = null;
@@ -34,10 +33,6 @@ namespace Os
 
         }
 
-        public void set()
-        {
-            label1.Text = "HEllp";
-        }
         //change意义是更新List和标签
         private string change()
         {
@@ -50,8 +45,31 @@ namespace Os
             int i;
             for (i = 0; i <max-1; i++)
             {
-                result += a[i * 6];
-                list.Add(a[i * 6]);
+                string ui;
+                ui = a[i * 6].ToString();
+                switch (ui)
+                {
+                    case "A":
+                        ui = 10.ToString();
+                        break;
+                    case "B":
+                        ui = 11.ToString();
+                        break;
+                    case "C":
+                        ui = 12.ToString();
+                        break;
+                    case "D":
+                        ui = 13.ToString();
+                        break;
+                    case "E":
+                        ui = 14.ToString();
+                        break;
+                    case "F":
+                        ui = 15.ToString();
+                        break;
+                }
+                result += ui;
+                list.Add(ui);
                 result += ",";
             }
             result += a[i*6];
@@ -59,6 +77,11 @@ namespace Os
             return result;
         }
 
+        public void setlabel3()
+        {
+            label3.Text = "页面访问序列：" + restart();
+            label3.Refresh();
+        }
         //左上角的设置选项。
         public  void setlabel()
         {
@@ -67,14 +90,13 @@ namespace Os
             else
                 acce.Text = "快表已关闭";
             acce.Refresh();
+            label3.Text = "页面访问序列：" + restart();
         }
         //每一个算法开始前，都应该进行一次restart操作。
-        private void restart()
-        {
-            
+        private string restart()
+        {       
             list.Clear();
-            change();
-           
+            return change(); 
         }
         private void button1_Click(object sender, EventArgs e)
         {

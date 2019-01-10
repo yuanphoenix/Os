@@ -40,7 +40,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.FIFO = new System.Windows.Forms.Button();
             this.Pause = new System.Windows.Forms.Button();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.acce = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.FIFOPanel.SuspendLayout();
@@ -120,9 +119,10 @@
             // 
             // label3
             // 
+            this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(129, 24);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(912, 23);
+            this.label3.Size = new System.Drawing.Size(112, 15);
             this.label3.TabIndex = 7;
             this.label3.Text = "页面访问序列：";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -168,16 +168,6 @@
             this.Pause.UseVisualStyleBackColor = true;
             this.Pause.Click += new System.EventHandler(this.Pause_Click);
             // 
-            // menuStrip2
-            // 
-            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1222, 24);
-            this.menuStrip2.TabIndex = 1;
-            this.menuStrip2.Text = "menuStrip2";
-            this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
-            // 
             // acce
             // 
             this.acce.AutoSize = true;
@@ -213,7 +203,6 @@
             this.Controls.Add(this.LRU);
             this.Controls.Add(this.FIFO);
             this.Controls.Add(this.LRUPanel);
-            this.Controls.Add(this.menuStrip2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosing);
@@ -234,17 +223,16 @@
         private System.Windows.Forms.Button OPT;
         private System.Windows.Forms.Button AllBegin;
         private System.Windows.Forms.Panel FIFOPanel;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel LRUPanel;
         private System.Windows.Forms.Panel OPTPanel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button FIFO;
         private System.Windows.Forms.Button Pause;
-        private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label acce;
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label3;
     }
 }
 
