@@ -296,12 +296,33 @@ namespace Os
             MessageBox.Show("保存成功!", "提示");
             sfd.Dispose();
         }
+
+
+        //干掉所有线程，并且清空所有Panel
         private void button3_Click(object sender, EventArgs e)
         {
-            Tfifo.Abort();
-           // Tlru.Abort();
-          //  Topt.Abort();
-            FIFOPanel.Controls.Clear();
+            if (Tfifo!=null)
+            {
+                Tfifo.Abort();
+                Tfifo = null;
+                FIFOPanel.Controls.Clear(); 
+            }
+            if (Tlru != null)
+            {
+                Tlru.Abort();
+                Tlru = null;
+                LRUPanel.Controls.Clear();
+            }
+            if (Topt!=null)
+            {
+                Topt.Abort();
+                Topt = null;
+                OPTPanel.Controls.Clear();
+            }
+
+            Request.test_FIFO.Clear();
+            Request.test_LRU.Clear();
+            Request.test_OPT.Clear();
         }
     }
 }
