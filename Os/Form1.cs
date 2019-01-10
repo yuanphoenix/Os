@@ -19,6 +19,7 @@ namespace Os
         private Thread Tfifo = null;
         private Thread Tlru = null;
         private Thread Topt = null;
+       
         private ArrayList list = new ArrayList(); 
         public Form1()
         {
@@ -222,6 +223,67 @@ namespace Os
         {
             Setting set = new Setting();
             set.Show(this);
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "BMP Files(*.bmp)|*.bmp|JPG Files(*.jpg;*.jpeg)|*.jpg;*.jpeg";
+            switch (whichone)
+            {
+               case 1:
+                    Rectangle rect = new Rectangle(0, 0, FIFOPanel.Width, FIFOPanel.Height);
+                    saveFile(rect,whichone);
+                    break;
+                case 2:
+                    Rectangle rec = new Rectangle(0, 0, LRUPanel.Width, LRUPanel.Height);
+                    saveFile(rec,whichone);
+                    break;
+                case 3:
+                    Rectangle re = new Rectangle(0, 0, OPTPanel.Width, OPTPanel.Height);
+                    saveFile(re,whichone);
+                    break;
+            }
+        
+        }
+
+        private void acce_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void saveFile(Rectangle rect,int which)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "BMP Files(*.bmp)|*.bmp|JPG Files(*.jpg;*.jpeg)|*.jpg;*.jpeg";
+            Bitmap bmp = new Bitmap(rect.Width, rect.Height);
+            switch (which)
+            {
+                case 1 :
+                  this.FIFOPanel.DrawToBitmap(bmp, rect);
+                    break;
+                case 2:
+                    this.LRUPanel.DrawToBitmap(bmp, rect);
+                    break;
+                case 3:
+                    this.OPTPanel.DrawToBitmap(bmp, rect);
+                    break;
+            }
+      
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                bmp.Save(sfd.FileName);
+            }
+            MessageBox.Show("保存成功!", "提示");
+            sfd.Dispose();
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Tfifo.Abort();
+           // Tlru.Abort();
+          //  Topt.Abort();
+            FIFOPanel.Controls.Clear();
         }
     }
 }

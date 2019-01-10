@@ -280,12 +280,7 @@ namespace Os
                 }
              ));
                 Sleep(TimeSpan.FromSeconds(1));
-                }
-
-
-
-
-          
+                }     
         }
 
           public void Algorithm_OPT()
@@ -512,11 +507,6 @@ namespace Os
             }
           
             return lab;
-        }
-
-          public int see()
-        {
-            return 0;
         }
     }
 }

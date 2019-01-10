@@ -42,6 +42,8 @@
             this.Pause = new System.Windows.Forms.Button();
             this.acce = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.FIFOPanel.SuspendLayout();
             this.OPTPanel.SuspendLayout();
             this.LRUPanel.SuspendLayout();
@@ -49,7 +51,7 @@
             // 
             // LRU
             // 
-            this.LRU.Location = new System.Drawing.Point(17, 122);
+            this.LRU.Location = new System.Drawing.Point(17, 151);
             this.LRU.Name = "LRU";
             this.LRU.Size = new System.Drawing.Size(99, 74);
             this.LRU.TabIndex = 3;
@@ -59,7 +61,7 @@
             // 
             // OPT
             // 
-            this.OPT.Location = new System.Drawing.Point(17, 220);
+            this.OPT.Location = new System.Drawing.Point(17, 253);
             this.OPT.Name = "OPT";
             this.OPT.Size = new System.Drawing.Size(99, 74);
             this.OPT.TabIndex = 4;
@@ -69,7 +71,7 @@
             // 
             // AllBegin
             // 
-            this.AllBegin.Location = new System.Drawing.Point(17, 319);
+            this.AllBegin.Location = new System.Drawing.Point(17, 355);
             this.AllBegin.Name = "AllBegin";
             this.AllBegin.Size = new System.Drawing.Size(99, 74);
             this.AllBegin.TabIndex = 5;
@@ -150,7 +152,7 @@
             // 
             // FIFO
             // 
-            this.FIFO.Location = new System.Drawing.Point(17, 24);
+            this.FIFO.Location = new System.Drawing.Point(17, 57);
             this.FIFO.Name = "FIFO";
             this.FIFO.Size = new System.Drawing.Size(99, 74);
             this.FIFO.TabIndex = 2;
@@ -160,7 +162,7 @@
             // 
             // Pause
             // 
-            this.Pause.Location = new System.Drawing.Point(15, 410);
+            this.Pause.Location = new System.Drawing.Point(15, 457);
             this.Pause.Name = "Pause";
             this.Pause.Size = new System.Drawing.Size(101, 33);
             this.Pause.TabIndex = 8;
@@ -171,15 +173,16 @@
             // acce
             // 
             this.acce.AutoSize = true;
-            this.acce.Location = new System.Drawing.Point(12, 470);
+            this.acce.Location = new System.Drawing.Point(30, 24);
             this.acce.Name = "acce";
             this.acce.Size = new System.Drawing.Size(82, 15);
             this.acce.TabIndex = 9;
             this.acce.Text = "快表已开启";
+            this.acce.Click += new System.EventHandler(this.acce_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 518);
+            this.button1.Location = new System.Drawing.Point(17, 518);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(99, 74);
             this.button1.TabIndex = 10;
@@ -187,11 +190,34 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(17, 627);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(99, 74);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "保存";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(17, 736);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(99, 74);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "全部清除";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1222, 805);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.acce);
             this.Controls.Add(this.OPTPanel);
@@ -233,6 +259,8 @@
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 
