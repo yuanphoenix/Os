@@ -69,11 +69,11 @@
             // 
             // AllBegin
             // 
-            this.AllBegin.Location = new System.Drawing.Point(17, 318);
+            this.AllBegin.Location = new System.Drawing.Point(17, 319);
             this.AllBegin.Name = "AllBegin";
             this.AllBegin.Size = new System.Drawing.Size(99, 74);
             this.AllBegin.TabIndex = 5;
-            this.AllBegin.Text = "全部执行";
+            this.AllBegin.Text = "图示";
             this.AllBegin.UseVisualStyleBackColor = true;
             this.AllBegin.Click += new System.EventHandler(this.AllBegin_Click_1);
             // 

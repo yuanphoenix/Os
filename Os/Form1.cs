@@ -210,7 +210,7 @@ namespace Os
         private void AllBegin_Click_1(object sender, EventArgs e)
         {
             All all = new All();
-           all. Show();
+           all. Show(this);
         }
 
         private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

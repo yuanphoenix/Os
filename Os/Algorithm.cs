@@ -27,7 +27,8 @@ namespace Os
         private int WithoutKuai_queye = Request.TimeOfneicun + Request.TimeOfqueye + Request.TimeOfneicun * 2;
 
         public void Algorithm_FIFO()
-        { 
+        {
+            All hah = new All();
                 //这个q是物理块的队列。
                 Queue<int> q = new Queue<int>();
                  int time = 0;
@@ -127,7 +128,9 @@ namespace Os
                                 }
                                 else//缺页率的计算
                                 {
+                                    double jieguo= (double)queyecishu / (double)(i) * 100;
                                     lab.Text = ((double)(double)queyecishu / (double)(i) * 100).ToString();
+                                    Request.test_FIFO.Add(jieguo);
                                 }
                             }
                             if (MyPanel.IsHandleCreated)
@@ -253,7 +256,9 @@ namespace Os
                                   }
                                  else//缺页率的计算
                                  {
-                                   lab.Text = ((double)(double)queyecishu / (double)(i) * 100).ToString();
+                                double jieguo = (double)queyecishu / (double)(i) * 100;
+                                lab.Text = ((double)(double)queyecishu / (double)(i) * 100).ToString();
+                                Request.test_LRU.Add(jieguo);
                                 }
                               }
                             if (MyPanel.IsHandleCreated)
@@ -385,8 +390,9 @@ namespace Os
                             }
                             else//缺页率的计算
                             {
-
+                                double jieguo = (double)queyecishu / (double)(i) * 100;
                                 lab.Text = ((double)(double)queyecishu / (double)(i) * 100).ToString();
+                                Request.test_OPT.Add(jieguo);
                             }
                         }
                         if (MyPanel.IsHandleCreated)
@@ -506,6 +512,11 @@ namespace Os
             }
           
             return lab;
+        }
+
+          public int see()
+        {
+            return 0;
         }
     }
 }

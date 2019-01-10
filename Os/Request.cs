@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +9,10 @@ namespace Os
 {
     class Request
     {
-        public  static bool kuaibiao = true;//快表的有无
+        public static ArrayList  test_FIFO = new ArrayList(); 
+        public static ArrayList  test_LRU = new ArrayList(); 
+        public static ArrayList  test_OPT = new ArrayList(); 
+        public static bool kuaibiao = true;//快表的有无
         public static int NumsOfwulikuai = 3;  //页内物理块个数
         public static int TimeOfneicun = 100; //内存的存取时间
         public static int TimeOfkuaibiao = 10;//访问快表时间
