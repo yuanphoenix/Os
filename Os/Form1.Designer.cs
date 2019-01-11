@@ -205,7 +205,7 @@
             this.Controls.Add(this.FIFO);
             this.Controls.Add(this.LRUPanel);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "页面置换";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

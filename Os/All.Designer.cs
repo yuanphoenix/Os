@@ -58,7 +58,7 @@
             this.ClientSize = new System.Drawing.Size(650, 536);
             this.Controls.Add(this.chart1);
             this.Name = "All";
-            this.Text = "All";
+            this.Text = "算法图示";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.All_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();

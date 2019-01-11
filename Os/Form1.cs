@@ -23,14 +23,13 @@ namespace Os
         private ArrayList list = new ArrayList(); 
         public Form1()
         {
-            InitializeComponent();
-           
+            InitializeComponent();       
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             label3.Text = "页面访问序列：" + change();
-            //this.WindowState = FormWindowState.Maximized;
+ 
 
         }
 
