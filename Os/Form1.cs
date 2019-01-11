@@ -237,8 +237,16 @@ namespace Os
         //打开《图示》界面。
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Setting set = new Setting();
-            set.Show(this);
+            if (Tfifo==null&&Tlru==null&&Topt==null)
+            {
+                Setting set = new Setting();
+                set.Show(this);
+            }
+            else
+            {
+                MessageBox.Show("请等待执行完成");
+            }
+           
         }
 
 
@@ -323,6 +331,13 @@ namespace Os
             Request.test_FIFO.Clear();
             Request.test_LRU.Clear();
             Request.test_OPT.Clear();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            button1_Click(sender,e);
+            button2_Click(sender, e);
+            OPT_Click(sender, e);
         }
     }
 }
